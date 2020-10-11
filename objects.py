@@ -97,7 +97,7 @@ def random(shape):
 
     for row in range(random_figure.shape[0]):
         random_start = np.random.randint((random_figure.shape[1] // 2) - 1)
-        random_size = np.random.randint(random_figure.shape[1] - random_start)
+        random_size = np.random.randint(low=(random_figure.shape[1] // 2) - 1, high=random_figure.shape[1] - random_start)
         random_figure[row, random_start:random_start+random_size] = np.ones((1, random_size))
 
     return random_figure

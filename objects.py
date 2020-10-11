@@ -100,4 +100,4 @@ def random(shape):
         random_size = np.random.randint(low=(random_figure.shape[1] // 2) - 1, high=random_figure.shape[1] - random_start)
         random_figure[row, random_start:random_start+random_size] = np.ones((1, random_size))
 
-    return random_figure
+    return np.pad(random_figure, ((10, 10), (10, 10)), mode='constant')

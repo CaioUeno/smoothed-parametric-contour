@@ -37,5 +37,5 @@ def gaussian_smooth_1d(signal, filter_size, sigma):
     Returns also a 1-dimensional numpy array.
     '''
 
-    filter = gaussian_filter_1d(filter_size, sigma)
-    return correlation(signal, filter)
+    gaussian_filter = gaussian_filter_1d(filter_size, sigma)
+    return correlation(signal, gaussian_filter)

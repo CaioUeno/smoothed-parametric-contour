@@ -14,17 +14,19 @@ def new_P(P):
 
 # Visit all neighbors to find the next pixel
 def neighbor(img, row, col, P):
+    num_rows, num_cols = img.shape
     list = [(row - 1, col), (row - 1, col + 1), (row, col + 1),
             (row + 1, col + 1), (row + 1, col), (row + 1, col - 1),
             (row, col - 1), (row - 1, col - 1)]
     for i in range(len(list)):
         ind = (i + P) % 8
         x, y = list[ind]
-        if img[x, y] == 1:
-            row = x
-            col = y
-            P = new_P(ind)
-            break
+        if x >= 0 and y >= 0 and x < num_rows and y < num_cols:
+            if img[x, y] == 1:
+                row = x
+                col = y
+                P = new_P(ind)
+                break
     return row, col, P
 
 # Find the contour
@@ -39,7 +41,6 @@ def image_contour(img):
             if img[row, col] == 1:
                 contour_row.append(row)
                 contour_col.append(col)
-                # print(row, col)
                 P = 2
                 while True:
                     row, col, P = neighbor(img, row, col, P)
@@ -48,7 +49,6 @@ def image_contour(img):
                         break
                     contour_row.append(row)
                     contour_col.append(col)
-                    # print(row, col)
             if end:
                 break
         if end:

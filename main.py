@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from objects import *
 from gaussian_smooth import *
-# import image_contour
+from moore_neighbor_tracing import image_contour
 
 fig_type = input("Select a figure: Cross, Square, Triangle, Circle or Random: ").lower()
 if fig_type == "cross":
@@ -22,8 +22,7 @@ plt.imshow(img)
 plt.savefig(f"images/{fig_type}.png")
 
 # get contour
-# contour_x = # to complete
-# contour_y = # to complete
+contour_x, contour_y = image_contour(img)
 
 filter_size = 5
 sigma = 0.5

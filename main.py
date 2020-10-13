@@ -35,17 +35,19 @@ plt.savefig(f"images/contour/{fig_type}_contour.png")
 
 # Apply gaussian smoothing
 filter_size = 5
-sigma = 0.5
+sigma = 2
 
-smoothed_contour_x = gaussian_smooth_1d(contour_x, filter_size, sigma)
-smoothed_contour_y = gaussian_smooth_1d(contour_y, filter_size, sigma)
+smoothed_contour_x = gaussian_smooth_1d(contour_x, filter_size, sigma).astype(int)
+smoothed_contour_y = gaussian_smooth_1d(contour_y, filter_size, sigma).astype(int)
 
-# contour_smoothed_values = [(x, y) for x, y in zip(smoothed_contour_x, smoothed_contour_y)]
-# img_contour_smoothed = np.zeros(img.shape)
-# for value in contour_smoothed_values:
-#     row, col = value
-#     img_contour_smoothed[row, col] = 1
+contour_smoothed_values = [(x, y) for x, y in zip(smoothed_contour_x, smoothed_contour_y)]
+img_contour_smoothed = np.zeros(img.shape)
+for value in contour_smoothed_values:
+    row, col = value
+    img_contour_smoothed[row, col] = 1
+
+# plt.plot(smoothed_contour_x, img.shape[1]-smoothed_contour_y)
 
 plt.imshow(img_contour_smoothed)
+plt.show()
 plt.savefig(f"images/smoothed/{fig_type}_smoothed.png")
-

@@ -39,7 +39,7 @@ def image_contour(img):
             if img[row, col] == 1:
                 contour_row.append(row)
                 contour_col.append(col)
-                print(row, col)
+                # print(row, col)
                 P = 2
                 while True:
                     row, col, P = neighbor(img, row, col, P)
@@ -48,9 +48,9 @@ def image_contour(img):
                         break
                     contour_row.append(row)
                     contour_col.append(col)
-                    print(row, col)
+                    # print(row, col)
             if end:
                 break
         if end:
             break
-    return contour_row, contour_col
+    return np.array(contour_row), np.array(contour_col)

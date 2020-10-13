@@ -88,12 +88,12 @@ def circle():
                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
 
-def random(shape):
+def random():
     '''
     Creates a pseudo-random figure with possible exotic contour.
     '''
 
-    random_figure = np.zeros(shape)
+    random_figure = np.zeros((20,20))
 
     for row in range(random_figure.shape[0]):
         random_start = np.random.randint((random_figure.shape[1] // 2) - 1)

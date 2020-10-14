@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 def correlation(signal, filter):
     '''
@@ -14,7 +15,7 @@ def correlation(signal, filter):
 
     signal_filtered = np.zeros(signal_size)
     for index in range(signal_size):
-            signal_filtered[index] = signal_padded[index:index+filter_size] @ filter
+            signal_filtered[index] = math.ceil(signal_padded[index:index+filter_size] @ filter)
 
     return signal_filtered
 

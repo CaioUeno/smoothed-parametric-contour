@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from objects import *
 from gaussian_smooth import *
 from moore_neighbor_tracing import image_contour
+from stats import * 
 
 fig_type = input("Select a figure: Cross, Square, Triangle, Circle or Random: ").lower()
 if fig_type == "cross":
@@ -49,5 +50,7 @@ for value in contour_smoothed_values:
 # plt.plot(smoothed_contour_x, img.shape[1]-smoothed_contour_y)
 
 plt.imshow(img_contour_smoothed)
-plt.show()
+#plt.show()
 plt.savefig(f"images/smoothed/{fig_type}_smoothed.png")
+
+stats(img_contour,contour_x, contour_y)
